@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f8f3">
+  <meta name="description" content="步调根据今天的状态，帮助校园用户安排循序渐进的运动、记录活动并进行恢复。">
+  <title>步调｜校园运动健康陪伴</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="步调首页">
+        <span class="brand-mark">步</span>
+        <span><b>步调</b><small>校园运动健康陪伴</small></span>
+      </a>
+      <div class="top-note"><span class="status-dot"></span>循序渐进，今天动一点</div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR CAMPUS WELLNESS COMPANION</p>
+          <h1>让运动，刚好适合<span>今天的你。</span></h1>
+          <p class="hero-text">按你的状态和喜欢的方式，安排一场不勉强的运动。完成后，我们再一起计划下一次。</p>
+          <div class="hero-tags"><span>不限定运动类型</span><span>跟着状态慢慢调整</span><span>记录只保存在本机</span></div>
+          <div class="agent-launch">
+            <a href="https://www.coze.cn/s/QjVLg_TxMhg/" target="_blank" rel="noopener noreferrer">体验 AI 对话（扣子）<span>↗</span></a>
+            <small>本网页计划由本地规则生成；扣子对话需登录扣子。</small>
+          </div>
+        </div>
+        <div class="hero-illustration" aria-hidden="true">
+          <div class="sun"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="path-line"></div><div class="hero-sticker">今天<br><b>轻松一点</b></div>
+          <div class="hero-number">01<span> / MOVE</span></div>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="主导航">
+        <button class="tab active" data-tab="plan">今日计划</button>
+        <button class="tab" data-tab="move">运动中</button>
+        <button class="tab" data-tab="history">我的记录 <span id="history-count" class="count">0</span></button>
+      </nav>
+
+      <section class="view active" id="view-plan">
+        <div class="section-heading">
+          <div><p class="eyebrow">A PLAN THAT FITS YOU</p><h2>今天想怎么动？</h2></div>
+          <span class="step-pill"><i>1</i> 了解状态</span>
+        </div>
+
+        <div class="planner-grid">
+          <div class="form-card card">
+            <div class="choice-switch" role="group" aria-label="计划方式">
+              <button class="choice active" data-mode="recommend">根据状态推荐</button>
+              <button class="choice" data-mode="choose">我来选运动</button>
+            </div>
+
+            <div id="activity-picker" class="field-block hidden">
+              <label class="field-label">今天想做什么？</label>
+              <div class="activity-grid">
+                <button class="activity-option selected" data-activity="run"><span class="activity-icon">↗</span><b>跑步</b><small>操场 / 户外</small></button>
+                <button class="activity-option" data-activity="walk"><span class="activity-icon">⌁</span><b>散步</b><small>轻松走一走</small></button>
+                <button class="activity-option" data-activity="strength"><span class="activity-icon">✳</span><b>健身</b><small>力量 / 器械</small></button>
+                <button class="activity-option" data-activity="ball"><span class="activity-icon">◉</span><b>球类</b><small>和朋友一起</small></button>
+                <button class="activity-option" data-activity="home"><span class="activity-icon">⌂</span><b>居家活动</b><small>不需要器械</small></button>
+                <button class="activity-option" data-activity="rest"><span class="activity-icon">☾</span><b>休息恢复</b><small>今天先缓一缓</small></button>
+              </div>
+            </div>
+
+            <div class="field-block">
+              <label class="field-label" for="recent">最近一周的活动情况</label>
+              <select id="recent" class="input"><option value="little">运动较少 / 刚想开始</option><option value="some">有过一两次活动</option><option value="regular">最近比较规律</option></select>
+            </div>
+            <div class="field-row">
+              <div class="field-block">
+                <label class="field-label" for="energy">今天的精力</label>
+                <select id="energy" class="input"><option value="low">有点累</option><option value="mid" selected>还可以</option><option value="high">状态不错</option></select>
+              </div>
+              <div class="field-block">
+                <label class="field-label" for="minutes">今天有多少时间？</label>
+                <select id="minutes" class="input"><option value="15">15 分钟左右</option><option value="25" selected>25 分钟左右</option><option value="40">40 分钟左右</option><option value="60">1 小时左右</option></select>
+              </div>
+            </div>
+            <div class="field-block">
+              <label class="field-label" for="preference">你更喜欢哪类活动？</label>
+              <select id="preference" class="input"><option value="any">都可以，帮我选</option><option value="run">跑步</option><option value="walk">散步 / 快走</option><option value="strength">健身 / 力量训练</option><option value="ball">球类运动</option><option value="home">居家活动</option></select>
+            </div>
+            <div class="field-row">
+              <div class="field-block">
+                <label class="field-label" for="soreness">现在有明显不适或酸痛吗？</label>
+                <select id="soreness" class="input"><option value="no">没有明显不适</option><option value="mild">有一点酸 / 累</option><option value="yes">有明显不适</option></select>
+              </div>
+              <div class="field-block">
+                <label class="field-label" for="mood">今天想要的感觉</label>
+                <select id="mood" class="input"><option value="easy">轻松、不要太累</option><option value="steady">有点挑战但能完成</option><option value="social">想和朋友一起</option></select>
+              </div>
+            </div>
+            <p class="privacy-note"><span>✳</span>这些信息只用于本次建议，运动记录保存在当前浏览器。</p>
+            <button id="make-plan" class="primary-button">为我安排今天 <span>→</span></button>
+          </div>
+
+          <aside class="side-column">
+            <div class="coach-card card">
+              <div class="coach-top"><span class="coach-avatar">步</span><span class="online-label"><i></i>陪你一起</span></div>
+              <p class="coach-kicker">先听听身体怎么说</p>
+              <h3>运动不需要<br>每次都拼尽全力。</h3>
+              <p>今天的建议会参考你的近期活动和自我感受。你也可以随时换一种更喜欢的运动。</p>
+              <div class="coach-sign">慢慢来，也算在前进 <span>↗</span></div>
+            </div>
+            <div class="principle-card card">
+              <span class="principle-icon">✦</span>
+              <div><b>你的节奏优先</b><p>建议是起点，不舒服时可以停下或改轻松活动。</p></div>
+            </div>
+          </aside>
+        </div>
+
+        <section id="plan-result" class="result-section hidden" aria-live="polite"></section>
+      </section>
+
+      <section class="view" id="view-move">
+        <div class="section-heading">
+          <div><p class="eyebrow">MOVE AT YOUR OWN PACE</p><h2>运动中</h2></div>
+          <span class="step-pill"><i>2</i> 轻松完成</span>
+        </div>
+        <div class="move-layout">
+          <div class="run-card card">
+            <div class="run-card-head"><div><p class="eyebrow">SESSION TRACKER</p><h3 id="session-title">准备开始一场运动</h3></div><span class="live-pill"><i></i><span id="gps-state">尚未开始</span></span></div>
+            <div class="run-metrics">
+              <div><strong id="distance">0.00</strong><span>公里</span><small>距离</small></div>
+              <div><strong id="pace">--:--</strong><span>/公里</span><small>平均配速</small></div>
+              <div><strong id="elapsed">00:00</strong><span></span><small>运动时间</small></div>
+            </div>
+            <div class="pace-bar"><span id="pace-fill"></span></div>
+            <p id="tracker-message" class="tracker-message">开始后可记录时间。跑步可允许浏览器访问定位，尝试计算 GPS 配速。</p>
+            <div class="tracker-actions"><button id="start-session" class="primary-button">开始运动 <span>→</span></button><button id="finish-session" class="secondary-button" disabled>结束并记录</button></div>
+            <label class="audio-toggle"><input id="audio-cues" type="checkbox" checked><span class="toggle-ui"></span><span>每公里语音播报配速 <small>需浏览器允许语音</small></span></label>
+          </div>
+          <div class="guide-card card">
+            <p class="eyebrow">TODAY'S CUE</p><div class="breath-mark">吸<span>·</span>呼<span>·</span>呼</div>
+            <h3>保持能轻松说话的节奏</h3><p>这里的节奏提示用于帮助你放松，不会测量你的呼吸或判断身体状况。觉得吃力时，请放慢或停下。</p>
+            <div class="guide-foot"><span>建议随时可以调整</span><span>✦</span></div>
+          </div>
+        </div>
+        <div class="notice-strip"><b>GPS 提示</b><span>浏览器定位需要在 localhost 或 HTTPS 页面使用，并由你主动授权。锁屏和后台定位效果因手机与浏览器而异；这是网页原型，不等同于原生运动 App。</span></div>
+      </section>
+
+      <section class="view" id="view-history">
+        <div class="section-heading">
+          <div><p class="eyebrow">SMALL STEPS ADD UP</p><h2>我的运动记录</h2></div>
+          <span class="step-pill"><i>3</i> 看见进步</span>
+        </div>
+        <div class="history-summary"><div><span>累计活动</span><b id="total-sessions">0 <small>次</small></b></div><div><span>最近一次</span><b id="last-activity">还没有记录</b></div><div><span>下一步</span><b id="history-next">先安排今天的活动</b></div></div>
+        <div id="history-list" class="history-list"></div>
+        <button id="clear-history" class="text-button hidden">清除本机记录</button>
+      </section>
+    </main>
+
+    <footer class="footer"><span>步调 · 校园运动健康陪伴</span><span>运动建议仅作一般健康管理参考；身体不适时请停止运动并寻求专业帮助。</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
